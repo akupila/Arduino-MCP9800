@@ -1,11 +1,14 @@
-# MCP9800 temperature sensor Arduino library
+# MCP9800 high accuracy temperature sensor Arduino library
 
 This library allows you to use the MCP9800/2 temperature sensor from Microchip. 
+
+[Datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/21909c.pdf)
 
 Chip features:
   
 	* Direct temperature readout
 	* Selectable resolution: 9-12bit
+	* Operating Voltage Range: 2.7V to 5.5V
 	* Accuracy
 	* ±0.5°C at +25°C
 	* ±1°C from -10°C to +85°C
