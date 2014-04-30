@@ -1,5 +1,4 @@
-# MCP9800 temperature sensor
-## Arduino library
+# MCP9800 temperature sensor Arduino library
 
 This library allows you to use the MCP9800/2 temperature sensor from Microchip. 
 
