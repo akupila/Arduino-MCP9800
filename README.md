@@ -24,4 +24,6 @@ Library features:
 	* All features available with easy-to-use APIs
 	* Returns celsius or fahrenheit
 
+![Wiring diagram](https://raw.githubusercontent.com/akupila/Arduino-MCP9800/master/wiring.jpg)
+
 See examples for usage, MCP9800.h for documentation
