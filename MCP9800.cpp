@@ -27,13 +27,11 @@ void MCP9800::read(byte reg, byte *buffer, uint8_t numBytes)
 	Wire.beginTransmission(MCP9800_ADDRESS);
 	Wire.write(reg);
 	Wire.endTransmission();
-	int8_t bytes = Wire.requestFrom((uint8_t)MCP9800_ADDRESS, numBytes);
-	if (buffer != NULL)
+	Wire.requestFrom((uint8_t)MCP9800_ADDRESS, numBytes);
+	while (Wire.available() < numBytes) {}; // wait for data to come back
+	while (numBytes--)
 	{
-		while (bytes--)
-		{
-			*buffer++ = Wire.read();
-		}
+		*buffer++ = Wire.read();
 	}
 }
 
