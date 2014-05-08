@@ -3,11 +3,13 @@
 
 #if (ARDUINO >= 100)
 #include <Arduino.h>
+#include <Wire.h>
 #else
-#include <WProgram.h>
+#include <stdlib.h>
+#include <avr/io.h>
+#include "i2cmaster.h"
 #endif
 
-#include <Wire.h>
 #include "MCP9800Reg.h"
 
 #define MCP9800_ADDRESS		0x48
@@ -112,13 +114,13 @@ class MCP9800
 
 		/**
 		 * @brief   Reads temperature in celcius * 16
-		 * @return  Current temperature in celsius. Divide by 5 to get actual reading
+		 * @return  Current temperature in celsius. Divide by 16 to get actual reading
 		 */
 		int16_t readCelsius();
 
 		/**
 		 * @brief   Reads temperature in fahrenheit * 16. There is some error due to integer precision
-		 * @return  Current temperature in fahrenheit. Divide by 5 to get actual reading
+		 * @return  Current temperature in fahrenheit. Divide by 16 to get actual reading
 		 */
 		int16_t readFahrenheit();
 
@@ -135,8 +137,8 @@ class MCP9800
 		float readFahrenheitf();
 
 	private:
-		void write(byte reg, byte *data, int8_t len);
-		void read(byte reg, byte *buffer, uint8_t numBytes);
+		void write(uint8_t reg, uint8_t *data, int8_t len);
+		void read(uint8_t reg, uint8_t *buffer, int8_t numBytes);
 		uint8_t adc;
 };
 
