@@ -53,10 +53,11 @@ void MCP9800::read(uint8_t reg, uint8_t *buffer, int8_t numBytes)
 	i2c_write(reg);
 	i2c_stop();
 	i2c_start_wait((MCP9800_ADDRESS << 1) + 1);
-	while (numBytes--)
+	while (numBytes-- > 1)
 	{
-		*buffer++ = i2c_readNak();
+		*buffer++ = i2c_readAck();
 	}
+	*buffer++ = i2c_readNak();
 	i2c_stop();
 #endif
 }
